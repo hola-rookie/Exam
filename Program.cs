@@ -17,10 +17,10 @@ namespace Exam
             Console.WriteLine(Convert(null) == "");
             Console.WriteLine(Convert("") == "");
             Console.WriteLine(Convert("abc") == "123");
-           // Console.WriteLine(Convert("abcd") == "123");
-           // Console.WriteLine(Convert("abcde") == "123");
-           // Console.WriteLine(Convert("abcdeaa") == "123");
-           // Console.WriteLine(Convert("abcdefg") == "123cg");
+            Console.WriteLine(Convert("abcd") == "123");
+            Console.WriteLine(Convert("abcde") == "123");
+            Console.WriteLine(Convert("abcdeaa") == "123");
+            Console.WriteLine(Convert("abcdefg") == "123cg");
         }
 
         static string Convert(string source)
@@ -32,11 +32,11 @@ namespace Exam
             if (Raw_Data == null)
              {
                 Console.WriteLine(Raw_Data);
-                Console.WriteLine("Hello");
+               // Console.WriteLine("Hello");
              }
              else if (Raw_Data == "")
              {
-                Console.WriteLine("Hello");
+                //Console.WriteLine("Hello");
              }  
              else
              { 
