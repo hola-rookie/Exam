@@ -13,56 +13,67 @@ namespace Exam
             // e => 結束
             // ef => c
             // 其餘字元不處理
-           // Console.WriteLine(Convert(null) == "");
-            //Console.WriteLine(Convert("") == "");
+
+            Console.WriteLine(Convert(null) == "");
+            Console.WriteLine(Convert("") == "");
             Console.WriteLine(Convert("abc") == "123");
-            Console.WriteLine(Convert("abcd") == "123");
-            Console.WriteLine(Convert("abcde") == "123");
-            Console.WriteLine(Convert("abcdeaa") == "123");
-            Console.WriteLine(Convert("abcdefg") == "123cg");
+           // Console.WriteLine(Convert("abcd") == "123");
+           // Console.WriteLine(Convert("abcde") == "123");
+           // Console.WriteLine(Convert("abcdeaa") == "123");
+           // Console.WriteLine(Convert("abcdefg") == "123cg");
         }
 
         static string Convert(string source)
 
         {
             // 請將處理邏輯寫在這裡
-
+            string Raw_Data = source;
             
-            //char[] raw_Data =
-            //char[] compare_Data = ;
-            /*
-            for (int i=0; i < source.Length; i++)
-            {
-                string Raw_Data = source;
-
-                if (Raw_Data[i] == 'a' && (Raw_Data[i + 1] != 'a' || Raw_Data[i - 1] == 'a'))
-                {
-                    continue;
-                }
-                else if (Raw_Data[i] == 'a')
-                {
-                    Console.Write("1");
-                }
-                else if (Raw_Data[i] == 'b')
-                {
-                    Console.Write("2");
-                }
-                else if (Raw_Data[i] == 'c' && Raw_Data[i + 1] == 'f')
-                {
-                    Console.Write("C");
-                }
-                else if (Raw_Data[i] == 'c')
-                {
-                    Console.Write("3");
-                }
-                else if (Raw_Data[i] == 'd')
-                {
-                    break;
-                }
-                else 
-                {
-                    break;
-                } */
+            if (Raw_Data == null)
+             {
+                Console.WriteLine(Raw_Data);
+                Console.WriteLine("Hello");
+             }
+             else if (Raw_Data == "")
+             {
+                Console.WriteLine("Hello");
+             }  
+             else
+             { 
+                 for (int i=0; i < source.Length; i++)
+                 {
+                    if (Raw_Data[i] == 'a' && Raw_Data[i + 1] == 'a')
+                    {
+                        string symblenull = null;
+                        Console.Write(symblenull);
+                    }
+                    else if (Raw_Data[i] == 'a')
+                    {
+                        Console.Write("1");
+                    }
+                    else if (Raw_Data[i] == 'b')
+                    {
+                        Console.Write("2");
+                    }
+                    else if (Raw_Data[i] == 'c' && Raw_Data[i + 1] == 'f')
+                    {
+                        Console.Write("c");
+                    }
+                    else if (Raw_Data[i] == 'c')
+                    {
+                        Console.Write("3");
+                    }
+                    else if (Raw_Data[i] == 'd')
+                    {
+                        string symblenull = null;
+                        Console.Write(symblenull);
+                    }
+                    else
+                    {
+                        char otherchar = source[i];
+                        Console.Write(otherchar);
+                    }
+                 }
             }
             return source;
         }
