@@ -42,12 +42,7 @@ namespace Exam
              { 
                  for (int i=0; i < source.Length; i++)
                  {
-                    if (Raw_Data[i] == 'a' && Raw_Data[i + 1] == 'a')
-                    {
-                        string symblenull = null;
-                        Console.Write(symblenull);
-                    }
-                    else if (Raw_Data[i] == 'a')
+                    if (Raw_Data[i] == 'a')
                     {
                         Console.Write("1");
                     }
@@ -63,17 +58,24 @@ namespace Exam
                     {
                         Console.Write("3");
                     }
+                    else if (Raw_Data[i] == 'g')
+                    {
+                        Console.Write("g");
+                    }
                     else if (Raw_Data[i] == 'd')
                     {
-                        string symblenull = null;
-                        Console.Write(symblenull);
+                        continue;
+                    }
+                    else if (Raw_Data[i] == 'e')
+                    {
+                        break;
                     }
                     else
                     {
-                        char otherchar = source[i];
-                        Console.Write(otherchar);
+                        continue;
                     }
                  }
+                Console.WriteLine("");
             }
             return source;
         }
