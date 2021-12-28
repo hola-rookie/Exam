@@ -27,7 +27,7 @@ namespace Exam
         {
             // 請將處理邏輯寫在這裡
 
-            Console.WriteLine();
+            
             //char[] raw_Data =
             //char[] compare_Data = ;
             /*
