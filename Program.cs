@@ -27,52 +27,49 @@ namespace Exam
 
         {
             // 請將處理邏輯寫在這裡
-            string Raw_Data = source;
             
-            if (Raw_Data == null)
+            if (source == null)  //排除source非字元的情況
              {
-                Console.WriteLine(Raw_Data);
-               // Console.WriteLine("Hello");
+                Console.WriteLine(source);
              }
-             else if (Raw_Data == "")
+             else if (source == "") //排除source非字元的情況
              {
-                //Console.WriteLine("Hello");
-             }  
+                Console.WriteLine(source);  
+             }
              else
-             { 
+             {
+                string Add_A_to_source = string.Format("{0}A",source); //增加一個字元讓後面的條件判斷不會跳出"超過陣列範圍"
+             // Console.WriteLine(Add_A_to_source);
+
                  for (int i=0; i < source.Length; i++)
                  {
-                    if (Raw_Data[i] == 'a')
+                    if (Add_A_to_source[i] == 'a')
                     {
                         Console.Write("1");
                     }
-                    else if (Raw_Data[i] == 'b')
+                    else if (Add_A_to_source[i] == 'b')
                     {
                         Console.Write("2");
                     }
-                    else if (Raw_Data[i] == 'c' && Raw_Data[i + 1] == 'f')
-                    {
-                        Console.Write("c");
-                    }
-                    else if (Raw_Data[i] == 'c')
+                    else if (Add_A_to_source[i] == 'c')
                     {
                         Console.Write("3");
                     }
-                    else if (Raw_Data[i] == 'g')
+                    else if (Add_A_to_source[i] == 'g')
                     {
                         Console.Write("g");
                     }
-                    else if (Raw_Data[i] == 'd')
+                    else if (Add_A_to_source[i] == 'd')
                     {
                         continue;
                     }
-                    else if (Raw_Data[i] == 'e')
+                    else if (Add_A_to_source[i] == 'e' && Add_A_to_source[i + 1] == 'f')
+                    {
+                        Console.Write("c");
+                    }
+                    else if (Add_A_to_source[i] == 'e')
                     {
                         break;
-                    }
-                    else
-                    {
-                        continue;
                     }
                  }
                 Console.WriteLine("");
