@@ -42,36 +42,46 @@ namespace Exam
             // 其餘字元不處理
 
             // 請將處理邏輯寫在這裡
+
+            string[] Result_array = new string[source.Length];
+
             if (source == null)  //排除source非字元的情況
             {
-                Console.WriteLine(source);
+                Result_array = null;
             }
             else if (source == "") //排除source非字元的情況
             {
-                Console.WriteLine(source);
+                Result_array = null;
             }
             else
             {
-                string Add_A_to_source = string.Format("{0}A", source); //增加一個字元讓後面的條件判斷不會跳出"超過陣列範圍"
-                                                                        // Console.WriteLine(Add_A_to_source);
+                string Add_A_to_source = string.Format("{0}A", source); //增加一個字元讓後面的條件判斷不會跳出"超過陣列範圍"                                                       // Console.WriteLine(Add_A_to_source);
 
                 for (int i = 0; i < source.Length; i++)
                 {
                     if (Add_A_to_source[i] == 'a')
                     {
-                        Console.Write("1");
+                        //Console.Write("1");
+                        string Result = "1";
+                        Result_array[i] = Result;
                     }
                     else if (Add_A_to_source[i] == 'b')
                     {
-                        Console.Write("2");
+                        //Console.Write("2");
+                        string Result = "2";
+                        Result_array[i] = Result;
                     }
                     else if (Add_A_to_source[i] == 'c')
                     {
-                        Console.Write("3");
+                        //Console.Write("3");
+                        string Result = "3";
+                        Result_array[i] = Result;
                     }
                     else if (Add_A_to_source[i] == 'g')
                     {
-                        Console.Write("g");
+                        //Console.Write("g");
+                        string Result = "g";
+                        Result_array[i] = Result;
                     }
                     else if (Add_A_to_source[i] == 'd')
                     {
@@ -80,32 +90,19 @@ namespace Exam
                     else if (Add_A_to_source[i] == 'e' && Add_A_to_source[i + 1] == 'f')
                     {
                         Console.Write("c");
+                        string Result = "c";
+                        Result_array[i] = Result;
                     }
                     else if (Add_A_to_source[i] == 'e')
                     {
                         break;
                     }
+
+                    
                 }
                 Console.WriteLine("");
             }
-            return source;
+            return Result_array;
         }
     }
 }
-//把source裡的字串一個一個做讀取判斷
-/*
- for(讀取所有source字元數量跟內容)
-    if      (讀到a)
-        輸出1
-    else if (讀到b)
-        輸出2
-    else if (讀到c && 下一個為f)
-        輸出c
-    else if (讀到c)
-        輸出3
-    eles if (讀到g)
-        輸出g
-    else
-        輸出""
- 
- */
