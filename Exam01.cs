@@ -8,13 +8,21 @@ namespace Exam
     {
         public void Run()
         {
-            AssertString(null, "", Convert);
-            AssertString("", "", Convert);
-            AssertString("abc", "123", Convert);
-            AssertString("abcd", "123", Convert);
-            AssertString("abcde", "123", Convert);
-            AssertString("abcdeaa", "123", Convert);
-            AssertString("abcdefg", "123cg", Convert);
+            AssertString(null, "", ConvertWithIfStatement);
+            AssertString("", "", ConvertWithIfStatement);
+            AssertString("abc", "123", ConvertWithIfStatement);
+            AssertString("abcd", "123", ConvertWithIfStatement);
+            AssertString("abcde", "123", ConvertWithIfStatement);
+            AssertString("abcdeaa", "123", ConvertWithIfStatement);
+            AssertString("abcdefg", "123cg", ConvertWithIfStatement);
+
+            AssertString(null, "", ConvertWithSwitchCase);
+            AssertString("", "", ConvertWithSwitchCase);
+            AssertString("abc", "123", ConvertWithSwitchCase);
+            AssertString("abcd", "123", ConvertWithSwitchCase);
+            AssertString("abcde", "123", ConvertWithSwitchCase);
+            AssertString("abcdeaa", "123", ConvertWithSwitchCase);
+            AssertString("abcdefg", "123cg", ConvertWithSwitchCase);
         }
 
         private void AssertString(string source, string expected, Func<string, string> func)
@@ -30,7 +38,7 @@ namespace Exam
             }
         }
 
-        private string Convert(string source)
+        private string ConvertWithIfStatement(string source)
         {
             // 規則
             // a => 1
@@ -39,70 +47,97 @@ namespace Exam
             // d => 跳過
             // e => 結束
             // ef => c
-            // 其餘字元不處理
+            // 其餘字元維持原樣
+            if (string.IsNullOrWhiteSpace(source)) return "";
 
-            // 請將處理邏輯寫在這裡
-
-            string[] Result_array = new string[source.Length];
-
-            if (source == null)  //排除source非字元的情況
+            var result = new StringBuilder();
+            for (int i = 0; i < source.Length; i++)
             {
-                Result_array = null;
-            }
-            else if (source == "") //排除source非字元的情況
-            {
-                Result_array = null;
-            }
-            else
-            {
-                string Add_A_to_source = string.Format("{0}A", source); //增加一個字元讓後面的條件判斷不會跳出"超過陣列範圍"                                                       // Console.WriteLine(Add_A_to_source);
-
-                for (int i = 0; i < source.Length; i++)
+                var @char = source[i];
+                if (@char == 'a')
                 {
-                    if (Add_A_to_source[i] == 'a')
+                    result.Append('1');
+                }
+                else if (@char == 'b')
+                {
+                    result.Append('2');
+                }
+                else if (@char == 'c')
+                {
+                    result.Append('3');
+                }
+                else if (@char == 'd')
+                {
+                    continue;
+                }
+                else if (@char == 'e')
+                {
+                    if (i + 1 < source.Length && source[i + 1] == 'f')
                     {
-                        //Console.Write("1");
-                        string Result = "1";
-                        Result_array[i] = Result;
+                        result.Append('c');
+                        i++;
                     }
-                    else if (Add_A_to_source[i] == 'b')
-                    {
-                        //Console.Write("2");
-                        string Result = "2";
-                        Result_array[i] = Result;
-                    }
-                    else if (Add_A_to_source[i] == 'c')
-                    {
-                        //Console.Write("3");
-                        string Result = "3";
-                        Result_array[i] = Result;
-                    }
-                    else if (Add_A_to_source[i] == 'g')
-                    {
-                        //Console.Write("g");
-                        string Result = "g";
-                        Result_array[i] = Result;
-                    }
-                    else if (Add_A_to_source[i] == 'd')
-                    {
-                        continue;
-                    }
-                    else if (Add_A_to_source[i] == 'e' && Add_A_to_source[i + 1] == 'f')
-                    {
-                        Console.Write("c");
-                        string Result = "c";
-                        Result_array[i] = Result;
-                    }
-                    else if (Add_A_to_source[i] == 'e')
+                    else
                     {
                         break;
+                        // return 也可以 
+                        //return result.ToString();
                     }
-
-                    
                 }
-                Console.WriteLine("");
+                else
+                {
+                    result.Append(@char);
+                }
             }
-            return Result_array;
+            return result.ToString();
+        }
+
+        private string ConvertWithSwitchCase(string source)
+        {
+            // 規則
+            // a => 1
+            // b => 2
+            // c => 3
+            // d => 跳過
+            // e => 結束
+            // ef => c
+            // 其餘字元維持原樣
+            if (string.IsNullOrWhiteSpace(source)) return "";
+
+            var result = new StringBuilder();
+            for (int i = 0; i < source.Length; i++)
+            {
+                var @char = source[i];
+                switch (@char)
+                {
+                    case 'a':
+                        result.Append('1');
+                        break;
+                    case 'b':
+                        result.Append('2');
+                        break;
+                    case 'c':
+                        result.Append('3');
+                        break;
+                    case 'd':
+                        break;
+                    case 'e':
+                        if (i + 1 < source.Length && source[i + 1] == 'f')
+                        {
+                            result.Append('c');
+                            i++;
+                            break;
+                        }
+                        else
+                        {
+                            return result.ToString();
+                        }
+                    default:
+                        result.Append(@char);
+                        break;
+                }
+            }
+            return result.ToString();
         }
     }
 }
